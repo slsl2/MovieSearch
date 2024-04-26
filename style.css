@@ -12,7 +12,7 @@ html {
 
 body {
   margin: 0;
-  width: 100vw;
+  width: 100%;
   text-align: center;
   font-size: 2rem;
   display: flex;
@@ -24,7 +24,6 @@ body {
 header {
   width: 100%;
   padding: 2rem;
-  background-color: rgb(67, 50, 113);
   color: white;
   font-size: 4rem;
 }
@@ -36,7 +35,7 @@ header {
 }
 
 .card-list {
-  width: 80%;
+  width: 90%;
   padding: 2rem;
   display: flex;
   justify-content: space-around;
@@ -58,5 +57,9 @@ header {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: auto;
+}
+
+.overview {
+  font-size: 1.5rem;
 }
