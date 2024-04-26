@@ -6,6 +6,14 @@
   box-sizing: border-box;
 }
 
+input,
+input:focus,
+textarea,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 html {
   font-size: 62.5%; /* 1rem을 10px로 변환 (원래는 16px) */
 }
@@ -28,10 +36,20 @@ header {
   font-size: 4rem;
 }
 
-.search-container {
+#search-container {
   margin: 5rem;
-  width: 20rem;
+  width: 24rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(245, 220, 247);
+}
+
+#search-box {
+  width: 100%;
+  padding: 1rem;
+  border: none;
 }
 
 .card-list {

@@ -30,8 +30,25 @@ fetch(
         />
         <div class="title">${title}</div>
         <div class="overview">${overview}</div>
-        <div class="ratings">${voteAverage}</div>
-      </div>`;
+        <div class="ratings">${voteAverage}</div>`;
       cardList.insertAdjacentHTML("beforeend", cardHtml);
     });
   });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBox = document.querySelector("#search-box");
+  const cardList = document.querySelector(".card-list");
+  searchBox.addEventListener("keyup", function () {
+    // keyup : 키를 놓을 때 이벤트 발생
+    const filterValue = searchBox.value.toLowerCase();
+    const cards = cardList.querySelectorAll(".card");
+    cards.forEach(function (card) {
+      const titleText = card.querySelector(".title").textContent.toLowerCase();
+      if (titleText.includes(filterValue)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
