@@ -98,8 +98,7 @@ header {
   border-radius: 1rem;
   position: relative;
   border: white solid 1rem;
-  transform: translateZ(0); /* 하드웨어 가속 활성화 */
-  transition: transform 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .card:hover {
