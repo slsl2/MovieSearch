@@ -1,3 +1,5 @@
+// api 호출
+
 const options = {
   method: "GET",
   headers: {
@@ -22,19 +24,26 @@ fetch(
       let overview = mov["overview"];
       let posterPath = mov["poster_path"];
       let voteAverage = mov["vote_average"];
+      // 별점 기능 구현 방법 찾는 중
+      let starPer = (voteAverage / 10) * 100;
+      let starPerRounded = `${Math.round(starPer / 10) * 10}%`;
       let cardHtml = `
-      <div class="card" id="card-${id}">
-        <img
-          class="image"
-          src="https://image.tmdb.org/t/p/original/${posterPath}"
-        />
+      <div class="card" id="card-${id}" data-id="${id}">
+        <img class="image" src="https://image.tmdb.org/t/p/original/${posterPath}" />
         <div class="title">${title}</div>
         <div class="overview">${overview}</div>
-        <div class="ratings">${voteAverage}</div>`;
+        <div class="ratings">
+          <div class="star-container">
+            <object id="starSvg" type="image/svg+xml" data="star.svg">Your browser does not support SVG</object>
+          </div>
+          <span class="star-grade">${voteAverage}/10</span>
+        </div>
+      </div>`;
       cardList.insertAdjacentHTML("beforeend", cardHtml);
     });
   });
 
+// 검색
 document.addEventListener("DOMContentLoaded", function () {
   const searchBox = document.querySelector("#search-box");
   const cardList = document.querySelector(".card-list");
@@ -50,5 +59,24 @@ document.addEventListener("DOMContentLoaded", function () {
         card.style.display = "none";
       }
     });
+  });
+
+  // alert 창
+  cardList.addEventListener("click", function (event) {
+    let target = event.target.closest(".card"); //
+    if (target) {
+      let id = target.dataset.id; // 카드 html에 data-id 속성 추가해서 사용
+      alert(`The id of this movie is ${id}`);
+    }
+  });
+});
+
+//
+document.addEventListener("DOMContentLoaded", function () {
+  const obj = document.getElementById("starSvg");
+  obj.addEventListener("load", function () {
+    const svgDoc = obj.contentDocument; // SVG 문서에 접근
+    const stars = svgDoc.querySelectorAll("path"); // 모든 별 찾기
+    updateStarRating(stars, 7.5); // 예시 점수 7.5로 함수 호출
   });
 });
