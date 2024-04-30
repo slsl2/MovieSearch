@@ -103,7 +103,7 @@ header {
 
 .card:hover {
   cursor: pointer;
-  transform: scale(1.05); /* 약간 확대 효과 */
+  transform: scale(1.05);
 }
 
 .image {
