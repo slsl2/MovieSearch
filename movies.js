@@ -33,9 +33,30 @@ fetch(
         // let overview = mov["overview"];
         // let posterPath = mov["poster_path"];
         // let voteAverage = mov["vote_average"];
-        // 별점 기능 구현 방법 찾는 중
-        let starPer = (voteAverage / 10) * 100;
-        let starPerRounded = `${Math.round(starPer / 10) * 10}%`;
+        let starImage;
+        if (voteAverage >= 9.5) {
+          starImage = "star5.svg";
+        } else if (voteAverage >= 8.5) {
+          starImage = "star4.5.svg";
+        } else if (voteAverage >= 7.5) {
+          starImage = "star4.svg";
+        } else if (voteAverage >= 6.5) {
+          starImage = "star3.5.svg";
+        } else if (voteAverage >= 5.5) {
+          starImage = "star3.svg";
+        } else if (voteAverage >= 4.5) {
+          starImage = "star2.5.svg";
+        } else if (voteAverage >= 3.5) {
+          starImage = "star2.svg";
+        } else if (voteAverage >= 2.5) {
+          starImage = "star1.5.svg";
+        } else if (voteAverage >= 1.5) {
+          starImage = "star1.svg";
+        } else if (voteAverage >= 0.5) {
+          starImage = "star0.5.svg";
+        } else {
+          starImage = "star0.svg";
+        }
         let cardHtml = `
       <div class="card" id="card-${id}" data-id="${id}">
         <img class="image" src="https://image.tmdb.org/t/p/original/${posterPath}" />
@@ -43,7 +64,7 @@ fetch(
         <div class="overview">${overview}</div>
         <div class="ratings">
           <div class="star-container">
-            <object id="starSvg" type="image/svg+xml" data="star.svg">Your browser does not support SVG</object>
+            <img src=/images/${starImage}>
           </div>
           <span class="star-grade">${voteAverage}/10</span>
         </div>
@@ -79,13 +100,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-// 별점 구현
-// document.addEventListener("DOMContentLoaded", function () {
-//   const obj = document.getElementById("starSvg");
-//   obj.addEventListener("load", function () {
-//     const svgDoc = obj.contentDocument; // SVG 문서에 접근
-//     const stars = svgDoc.querySelectorAll("path"); // 모든 별 찾기
-//     updateStarRating(stars, 7.5); // 예시 점수 7.5로 함수 호출
-//   });
-// })
