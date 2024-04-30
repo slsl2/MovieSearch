@@ -142,3 +142,19 @@ header {
 .star-grade {
   font-size: 1.4rem;
 }
+
+footer {
+  margin-top: 1rem;
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: #555 solid 0.1rem;
+  color: #555;
+}
+
+footer > a {
+  margin-bottom: 1rem;
+}

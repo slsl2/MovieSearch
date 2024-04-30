@@ -1,3 +1,5 @@
+const cardList = document.querySelector(".card-list");
+
 // api 호출
 
 const options = {
@@ -16,7 +18,6 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     let rows = data["results"];
-    const cardList = document.querySelector(".card-list");
     cardList.innerHTML = "";
     rows.forEach(
       ({
@@ -55,7 +56,6 @@ fetch(
 // 검색
 document.addEventListener("DOMContentLoaded", function () {
   const searchBox = document.querySelector("#search-box");
-  const cardList = document.querySelector(".card-list");
   searchBox.addEventListener("keyup", function () {
     // keyup : 키를 놓을 때 이벤트 발생
     const filterValue = searchBox.value.toLowerCase();
