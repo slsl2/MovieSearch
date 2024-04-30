@@ -27,12 +27,7 @@ fetch(
         poster_path: posterPath,
         vote_average: voteAverage,
       }) => {
-        // 위와 같이 객체구조분해할당을 통해 간결하게 바꿈
-        // let id = mov["id"];
-        // let title = mov["original_title"];
-        // let overview = mov["overview"];
-        // let posterPath = mov["poster_path"];
-        // let voteAverage = mov["vote_average"];
+        // 별점 이미지로 구현
         let starImage;
         if (voteAverage >= 9.5) {
           starImage = "star5.svg";
@@ -93,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // alert 창
   cardList.addEventListener("click", function (event) {
-    let target = event.target.closest(".card"); //
+    let target = event.target.closest(".card");
     if (target) {
       let id = target.dataset.id; // 카드 html에 data-id 속성 추가해서 사용
       alert(`The id of this movie is ${id}`);
